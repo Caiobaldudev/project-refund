@@ -3,6 +3,8 @@ const amount = document.getElementById("amount");
 const expense = document.getElementById("expense");
 const category = document.getElementById("category");
 
+const expenseList = document.querySelector("ul");
+
 amount.oninput = () => {
   let value = amount.value.replace(/\D/g, "");
 
@@ -31,4 +33,22 @@ form.onsubmit = (e) => {
     amount: amount.value,
     created_at: new Date(),
   };
+  expenseAdd(newExpense);
 };
+
+function expenseAdd(newExpense) {
+  try {
+    const expenseItem = document.createElement("li");
+    expenseItem.classList.add("expense");
+
+    const expenseIcon = document.createElement("img");
+    expenseIcon.setAttribute("src", `img/${newExpense.category_id}.svg`);
+    expenseIcon.setAttribute("alt", newExpense.category_name);
+
+    expenseItem.append(expenseIcon);
+
+    expenseList.append(expenseItem);
+  } catch (error) {
+    alert("Não foi possível atualizar a lista de despesas.");
+  }
+}

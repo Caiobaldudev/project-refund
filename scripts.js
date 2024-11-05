@@ -67,6 +67,12 @@ function expenseAdd(newExpense) {
       .toUpperCase()
       .replace("R$", "")}`;
 
+    //Cria ícone de remover
+    const removeIcon = document.createElement("img");
+    removeIcon.classList.add("remove-icon");
+    removeIcon.setAttribute("src", "img/remove.svg");
+    removeIcon.setAttribute("alt", "remover");
+
     //Add infos no item.
     expenseItem.append(expenseIcon, expenseInfo, expenseAmount);
 
